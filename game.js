@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-var s;
+var s; // sprite reference placeholder
+var speed = 4;
 
 var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "our-game", {
 	preload: preload,
@@ -11,7 +12,7 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "
 
 function preload () {
 	
-	game.load.image("character", "./assets/man.png");
+	game.load.image("man", "assets/man.png");
 	
 }
 
@@ -24,15 +25,15 @@ function create () {
 
 function update () {
 	
-	var speed = 4;
-	
 	if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
 		s.x -= speed;
 		
 	} else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
 		s.x += speed;
 		
-	} else if (game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+	}
+	
+	if (game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
 		s.y -= speed;
 		
 	} else if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
@@ -44,7 +45,7 @@ function update () {
 
 function render () {
 	
-	
+	game.debug.spriteInfo(s, 20, 32);
 	
 }
 
