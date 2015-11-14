@@ -14,6 +14,7 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "
 	update: update,
 	render: render
 });
+var fader = new Box(game);
 
 function preload () {
 	
@@ -22,10 +23,12 @@ function preload () {
 	game.load.image("box", "assets/box.png");
 	game.load.tilemap("map", "assets/tilemap.csv", null, Phaser.Tilemap.CSV);
 	
-}// preload()
+}
 
 
 function create () {
+	
+	game.stage.backgroundColor = 0x999999;
 	
 	map = game.add.tilemap("map", 200, 200);
 	map.addTilesetImage("world");
@@ -46,7 +49,9 @@ function create () {
 	
 	
 	
-}// create()
+	s = game.add.sprite(game.world.centerX, game.world.centerY, "man");
+	fader.init();
+} // create()
 
 function update () {
 	
