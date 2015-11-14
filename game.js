@@ -9,18 +9,19 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "
 	update: update,
 	render: render
 });
+var fader = new Box(game);
 
-function preload () {
-	
+function preload () {	
 	game.load.image("man", "assets/man.png");
-	
+	game.load.image("boxFade", "assets/fade.png");	
+	game.stage.backgroundColor = 0x999999;
 }
 
 
 function create () {
 	
 	s = game.add.sprite(game.world.centerX, game.world.centerY, "man");
-	
+	fader.init();
 }
 
 function update () {
