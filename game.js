@@ -15,8 +15,8 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "
 });
 
 var fader = new Box(game);
-var player = new Player(game, world, fader);
 var music = new Music(game);
+var player = new Player(game, world, fader, music);
 var playlist = ["assets/music/high.ogg", "assets/music/mid.ogg", "assets/music/low.ogg"];
 var goodBubbles = [];
 var badBubbles = [];

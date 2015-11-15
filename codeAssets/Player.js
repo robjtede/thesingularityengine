@@ -1,8 +1,9 @@
-function Player(g,w,f)
+function Player(g,w,f,m)
 {
 	var gameObj = g;
 	var worldObj = w;
 	var faderObj = f;
+	var musicObj = m;
 	var sprite;
 	var speed = 300;
 	var health = 100;
@@ -25,6 +26,7 @@ function Player(g,w,f)
 	{
 		this.changeHealth(-healthLoss);
 		faderObj.setRatio(health/100);
+		musicObj.setRatio(health/100);
 		this.sprite.body.velocity.set(0);
 		if (gameObj.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
 			this.sprite.body.velocity.x = -speed;
