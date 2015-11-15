@@ -5,7 +5,7 @@ function Player(g,w,f,m)
 	var faderObj = f;
 	var musicObj = m;
 	var sprite;
-	var speed = 700;
+	var speed = 250;
 	var health = 100;
 	var points = 0;
 	var healthLoss = 0.02;

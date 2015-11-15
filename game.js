@@ -46,7 +46,7 @@ function create () {
 	map = game.add.tilemap("map", 100, 100);
 	map.addTilesetImage("world");
 
-	// music.create(this);
+	music.create(this);
 	
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 	world = map.createLayer(0);
@@ -65,14 +65,14 @@ function create () {
 	
 	game.camera.follow(player.getSprite());
 	
-	// fader.init();
+	fader.init();
 	
 }// create()
 
 function update () {
 	
-	// fader.moveTo(player.getX(), player.getY());
-	// fader.update();
+	fader.moveTo(player.getX(), player.getY());
+	fader.update();
 	
 	// bubble.update();
 	
@@ -84,9 +84,9 @@ function update () {
 	game.physics.arcade.collide(player.getSprite(), world);
 	player.update();
 	
-	// if (player.getHealth() == 0) {
-		// window.location.href = "end.html";
-	// }
+	if (player.getHealth() == 0) {
+		window.location.href = "end.html";
+	}
 	
 }// update()
 
