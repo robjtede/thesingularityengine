@@ -42,6 +42,7 @@ function create () {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 	
 	player = game.add.sprite(game.world.centerX, game.world.centerY, "man", 0);
+	player.anchor.setTo(0.5,0.5);
 	player.animations.add("backwards", [9, 11, 10, 11], 5, true);
 	player.animations.add("forwards", [1, 0, 2, 0], 5, true);
 	player.animations.add("left", [4, 3, 5, 3], 5, true);
