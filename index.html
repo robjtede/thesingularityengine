@@ -1,23 +1,35 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<!-- Meta Tags -->
-	<meta charset="UTF-8">
-	
-	<title>The Sinularity Engine</title>
-	
-	<!-- Styles -->
 	<link rel="stylesheet" href="style.css" media="screen">
-	
-	<!-- Scripts -->
-	<script src="phaser.min.js"></script>
-	<script src="codeAssets/Player.js"></script>
-	<script src="codeAssets/Box.js"></script>
-	<script src="codeAssets/Music.js"></script>
-	<script src="codeAssets/Bubble.js"></script>
-	<script src="game.js"></script>
-	
+	<style>
+		body{
+			background-color: black;
+		}
+		.eggs{
+			width:270px;
+			height:150px;
+			position:absolute;
+			left:20%;
+			top:5%;
+			margin: -40px 0 0 -100px;
+			color: white;
+			font-family: arial;
+		}
+		a {
+		  color: white;
+		  text-decoration: none;
+		}
+		a:hover {
+		  color: red;
+		  text-decoration: none;
+		}
+	</style>
 </head>
 <body>
+	<div class = "eggs">
+	  <img src="assets\1.png">
+	  <span><a href="game.html">Click to play</a></span>
+	</div>
 </body>
 </html>

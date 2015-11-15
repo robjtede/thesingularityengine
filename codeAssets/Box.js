@@ -49,7 +49,7 @@ function Box(g) //Parsing the game object
 		stepRate = Math.PI/(ratio * 100);
 		for (var i = 0; i<4; i++)
 		{
-			this.sprites[i].animations.getAnimation("border").speed = baseFps * (1+(1-ratio)*1.5 /*- 0.5 + randoms[i]*/);
+			this.sprites[i].animations.getAnimation("border").speed = baseFps * (1+(1-ratio)*1.5);
 		}
 	}
 	this.update = function()

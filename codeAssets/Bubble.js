@@ -7,7 +7,7 @@ function Bubble(g,x,y)
 	var yPos = y;
 	var sprite;
 	var detectionRange = [200,240];// Distance at which bubble activates (good/bad)
-	var speed = [0.015,0.012];
+	var speed = [0.003,0.012];
 	var popDistance = [80,40];
 	var effect = 10;
 	this.init = function(t,p)
