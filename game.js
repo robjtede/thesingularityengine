@@ -29,9 +29,11 @@ function preload () {
 	
 	game.load.spritesheet("man", "assets/guy.png", 50, 80);
 	game.load.spritesheet("boxFade", "assets/fade.png", 1000, 200, 3);
-	music.init(playlist);
+	
 	game.load.spritesheet("goodBubble", "assets/goodBubble.png", 28, 25, 2);
 	game.load.spritesheet("badBubble", "assets/badBubble.png", 28, 25, 2);
+	
+	music.init(playlist);
 
 	for (var i = 0; i<100; i++) {
 		goodBubbles[i] = new Bubble(game, Math.random()*6000 + 600, Math.random() * 2000 + 400);
@@ -65,16 +67,16 @@ function create () {
 		badBubbles[i].init("bad", player);
 	}
 	
-	player = game.add.sprite(game.world.centerX, game.world.centerY, "man", 0);
-	player.animations.add("backwards", [9, 11, 10, 11], 5, true);
-	player.animations.add("forwards", [1, 0, 2, 0], 5, true);
-	player.animations.add("left", [4, 3, 5, 3], 5, true);
-	player.animations.add("right", [6, 8, 7, 8], 5, true);
+	// player = game.add.sprite(game.world.centerX, game.world.centerY, "man", 0);
+	player.getSprite().animations.add("backwards", [9, 11, 10, 11], 5, true);
+	player.getSprite().animations.add("forwards", [1, 0, 2, 0], 5, true);
+	player.getSprite().animations.add("left", [4, 3, 5, 3], 5, true);
+	player.getSprite().animations.add("right", [6, 8, 7, 8], 5, true);
 	
 	game.physics.enable(player, Phaser.Physics.ARCADE);
-	player.body.setSize(50, 80, 0, 0);
+	player.getSprite().body.setSize(50, 80, 0, 0);
 	
-	game.camera.follow(player);
+	game.camera.follow(player.getSprite());
 	
 	fader.init();
 	
@@ -83,8 +85,9 @@ function create () {
 function update () {
 	
 	fader.moveTo(player.getX(), player.getY());
-	fader.update();	
+	fader.update();
 	//bubble.update();
+	
 	for (var i = 0; i<100; i++) {
 		goodBubbles[i].update();
 		badBubbles[i].update();

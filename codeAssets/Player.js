@@ -24,7 +24,7 @@ function Player(g,w,f)
 	this.update = function()
 	{
 		this.changeHealth(-healthLoss);
-		faderObj.setRatio(health/100);	
+		faderObj.setRatio(health/100);
 		this.sprite.body.velocity.set(0);
 		if (gameObj.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
 			this.sprite.body.velocity.x = -speed;
