@@ -10,8 +10,7 @@ function Bubble(g,x,y)
 	var speed = [0.002,0.005];
 	var popDistance = [80,40];
 	var effect = 10;
-	var badcounter = 1;
-	var goodcounter = 1;
+	
 	this.init = function(t,p)
 	{
 		this.playerObj = p;
@@ -40,7 +39,8 @@ function Bubble(g,x,y)
 				{
 					this.playerObj.changeHealth(effect*2);
 					this.playerObj.addPoint()
-					window.open("assets/good/" + (goodcounter++) + ".png");
+					goodCounter++;
+					window.open("assets/good/" + (goodCounter) + ".png");
 					xPos = -1000;
 					yPos = -1000;
 				}
@@ -53,7 +53,8 @@ function Bubble(g,x,y)
 				if(distance <= popDistance[1])
 				{
 					this.playerObj.changeHealth(-effect);
-					window.open("assets/bad/" + (badcounter++) + ".png");
+					badCounter++;
+					window.open("assets/bad/" + (badCounter) + ".png");
 					xPos = -1000;
 					yPos = -1000;
 				}

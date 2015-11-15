@@ -17,6 +17,8 @@ var player = new Player(game, world, fader, music);
 var playlist = ["assets/music/high.ogg", "assets/music/mid.ogg", "assets/music/low.ogg"];
 var goodBubbles = [];
 var badBubbles = [];
+window.badCounter = 0;
+window.goodCounter = 0;
 //var bubble = new Bubble(game, 5675,1000);
 
 function preload () {
