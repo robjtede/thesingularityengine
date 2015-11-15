@@ -14,6 +14,7 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "
 
 var fader = new Box(game);
 var player = new Player(game, world, fader);
+var music = new Music(game);
 
 function preload () {
 	
@@ -22,6 +23,7 @@ function preload () {
 	
 	game.load.spritesheet("man", "assets/guy.png", 50, 80);
 	game.load.spritesheet("boxFade", "assets/fade.png", 1000, 200, 3);
+	music.init("assets/music/high.ogg");
 	
 }
 
@@ -32,6 +34,8 @@ function create () {
 	
 	map = game.add.tilemap("map", 80, 80);
 	map.addTilesetImage("world");
+
+	music.create(this);
 	
 	world = map.createLayer(0);
 	world.resizeWorld();
@@ -62,6 +66,7 @@ function update () {
 function render () {
 	
 	game.debug.spriteInfo(player.getSprite(), 20, 32);
+	music.render(20, 500);
 	
 }// render()
 
