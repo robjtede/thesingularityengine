@@ -14,14 +14,15 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "
 	update: update,
 	render: render
 });
+
 var fader = new Box(game);
 
 function preload () {
 	
-	game.load.image("world", "assets/world.jpg");
-	game.load.spritesheet("man", "assets/guy.png", 50, 80);
-	game.load.image("box", "assets/box.png");
+	game.load.image("world", "assets/map.png");
 	game.load.tilemap("map", "assets/tilemap.csv", null, Phaser.Tilemap.CSV);
+	
+	game.load.spritesheet("man", "assets/guy.png", 50, 80);
 	game.load.spritesheet("boxFade", "assets/fade.png", 1000, 200, 3);
 	
 }
@@ -31,7 +32,7 @@ function create () {
 	
 	game.stage.backgroundColor = 0x999999;
 	
-	map = game.add.tilemap("map", 200, 200);
+	map = game.add.tilemap("map", 80, 80);
 	map.addTilesetImage("world");
 	
 	world = map.createLayer(0);
@@ -41,9 +42,9 @@ function create () {
 	
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 	
-	player = game.add.sprite(game.world.centerX, game.world.centerY, "man", 0);
+	player = game.add.sprite(0, 0, "man", 0);
 	player.animations.add("backwards", [9, 11, 10, 11], 5, true);
-	player.animations.add("forwards", [1, 0, 2, 0], 5, true);
+	player.animations.add("forwards", [1, 0, 2, 0], 20, true);
 	player.animations.add("left", [4, 3, 5, 3], 5, true);
 	player.animations.add("right", [6, 8, 7, 8], 5, true);
 	
@@ -52,8 +53,8 @@ function create () {
 	
 	game.camera.follow(player);
 	
-	
 	fader.init();
+	
 } // create()
 
 function update () {
@@ -82,11 +83,12 @@ function update () {
 		player.play("forwards");
 		
 	} else {
+		player.body.velocity.x = 0;
 		player.body.velocity.y = 0;
 		player.animations.stop();
 		
 	}
-
+	
 	if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
 		fader.setRatio(0);
 	}
