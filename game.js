@@ -22,6 +22,7 @@ function preload () {
 	game.load.image("man", "assets/man.png");
 	game.load.image("box", "assets/box.png");
 	game.load.tilemap("map", "assets/tilemap.csv", null, Phaser.Tilemap.CSV);
+	game.load.spritesheet("boxFade", "assets/fade.png", 1000, 200, 3);
 	
 }
 
@@ -55,6 +56,9 @@ function create () {
 
 function update () {
 	
+	fader.moveTo(player.x,player.y);
+	fader.update();
+
 	game.physics.arcade.collide(player, world);
 	
 	player.body.velocity.set(0);
@@ -79,6 +83,10 @@ function update () {
 	} else {
 		player.body.velocity.y = 0;
 		
+	}
+
+	if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
+		fader.setRatio(0);
 	}
 	
 	
