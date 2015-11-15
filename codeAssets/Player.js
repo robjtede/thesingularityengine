@@ -18,7 +18,7 @@ function Player(g,w,f,m)
 		this.sprite.animations.add("left", [4, 3, 5, 3], 5, true);
 		this.sprite.animations.add("right", [6, 8, 7, 8], 5, true);
 		gameObj.physics.enable(this.sprite, Phaser.Physics.ARCADE);
-		this.sprite.body.setSize(50, 80, 0, 0);
+		this.sprite.body.setSize(40, 60, 5, 10);
 		gameObj.camera.follow(this.sprite);
 
 	}
