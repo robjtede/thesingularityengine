@@ -6,8 +6,8 @@ function Bubble(g,x,y)
 	var xPos = x;
 	var yPos = y;
 	var sprite;
-	var detectionRange = [200,300];// Distance at which bubble activates (good/bad)
-	var speed = [0.015,0.018];
+	var detectionRange = [200,250];// Distance at which bubble activates (good/bad)
+	var speed = [0.015,0.012];
 	var popDistance = [80,40];
 	var effect = 10;
 	this.init = function(t,p)
@@ -27,15 +27,16 @@ function Bubble(g,x,y)
 	this.update = function()
 	{
 		var distance = Math.sqrt((this.sprite.x - this.playerObj.getSprite().x)*(this.sprite.x - this.playerObj.getSprite().x)+(this.sprite.y - this.playerObj.getSprite().y)*(this.sprite.y - this.playerObj.getSprite().y));
+		
 		if(this.typeString == "good")
 		{
 			if(distance <= detectionRange[0])
 			{
-				xPos = xPos + (xPos - this.playerObj.getSprite().x) * speed[0];
-				yPos = yPos + (yPos - this.playerObj.getSprite().y) * speed[0];
+				xPos += (xPos - this.playerObj.getSprite().x) * speed[0];
+				yPos += (yPos - this.playerObj.getSprite().y) * speed[0];
 				if(distance <= popDistance[0])
 				{
-					this.playerObj.changeHealth(effect);
+					this.playerObj.changeHealth(effect*2);
 					this.playerObj.addPoint()
 					xPos = -1000;
 					yPos = -1000;

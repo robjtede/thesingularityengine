@@ -4,13 +4,13 @@ function Player(g,w,f)
 	var worldObj = w;
 	var faderObj = f;
 	var sprite;
-	var speed = 300;
+	var speed = 700;
 	var health = 100;
 	var points = 0;
-	var healthLoss = 0.05;
+	var healthLoss = 0.02;
 	this.init = function()
 	{	
-		this.sprite = gameObj.add.sprite(gameObj.world.centerX, gameObj.world.centerY, "man", 0);
+		this.sprite = gameObj.add.sprite(300,300, "man", 0);
 		this.sprite.anchor.setTo(0.5,0.5);
 		this.sprite.animations.add("backwards", [9, 11, 10, 11], 5, true);
 		this.sprite.animations.add("forwards", [1, 0, 2, 0], 5, true);
@@ -24,7 +24,7 @@ function Player(g,w,f)
 	this.update = function()
 	{
 		this.changeHealth(-healthLoss);
-		faderObj.setRatio(health/100);
+		// faderObj.setRatio(health/100);
 		this.sprite.body.velocity.set(0);
 		if (gameObj.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
 			this.sprite.body.velocity.x = -speed;
