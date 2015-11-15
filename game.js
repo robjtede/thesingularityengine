@@ -32,6 +32,7 @@ function create () {
 	map = game.add.tilemap("map", 200, 200);
 	map.addTilesetImage("world");
 	
+	game.physics.startSystem(Phaser.Physics.ARCADE);
 	world = map.createLayer(0);
 	world.resizeWorld();
 	map.setCollisionBetween(0, 1);
@@ -45,6 +46,7 @@ function update () {
 	
 	fader.moveTo(player.getX(), player.getY());
 	fader.update();	
+	game.physics.arcade.collide(player.getSprite(), world);
 	player.update();
 
 	if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
