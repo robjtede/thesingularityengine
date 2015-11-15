@@ -13,6 +13,9 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "
 });
 var fader = new Box(game);
 var player = new Player(game, world, fader);
+var goodBubbles = [];
+var badBubbles = [];
+//var bubble = new Bubble(game, 5675,1000);
 
 function preload () {
 	
@@ -21,7 +24,14 @@ function preload () {
 	game.load.image("box", "assets/box.png");
 	game.load.tilemap("map", "assets/tilemap.csv", null, Phaser.Tilemap.CSV);
 	game.load.spritesheet("boxFade", "assets/fade.png", 1000, 200, 3);
-	
+	game.load.spritesheet("goodBubble", "assets/goodBubble.png", 28, 25, 2);
+	game.load.spritesheet("badBubble", "assets/badBubble.png", 28, 25, 2);
+
+	for(var i = 0; i<100; i++)
+	{
+		goodBubbles[i] = new Bubble(game, Math.random()*6000 + 600, Math.random() * 2000 + 400);
+	       	badBubbles[i] = new Bubble(game, Math.random()*6000+600, Math.random() * 2000 + 400);
+	}
 }
 
 
@@ -39,6 +49,12 @@ function create () {
 	world.debug = true;	
 	
 	player.init();
+	//bubble.init("bad", player);
+	for(var i = 0; i<100; i++)
+	{
+		goodBubbles[i].init("good", player);
+		badBubbles[i].init("bad", player);
+	}
 	fader.init();
 } // create()
 
@@ -46,11 +62,21 @@ function update () {
 	
 	fader.moveTo(player.getX(), player.getY());
 	fader.update();	
+	//bubble.update();
+	for (var i = 0; i<100; i++)
+	{
+		goodBubbles[i].update();
+		badBubbles[i].update();
+	}
 	game.physics.arcade.collide(player.getSprite(), world);
 	player.update();
 
-	if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+	/*if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
 		fader.setRatio(0);
+	}*/
+	if (player.getHealth() == 0)
+	{
+		window.location.href = "end.html";
 	}
 	
 	

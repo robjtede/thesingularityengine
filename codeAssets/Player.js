@@ -6,6 +6,8 @@ function Player(g,w,f)
 	var sprite;
 	var speed = 300;
 	var health = 100;
+	var points = 0;
+	var healthLoss = 0.05;
 	this.init = function()
 	{	
 		this.sprite = gameObj.add.sprite(gameObj.world.centerX, gameObj.world.centerY, "man", 0);
@@ -21,6 +23,7 @@ function Player(g,w,f)
 	}
 	this.update = function()
 	{
+		this.changeHealth(-healthLoss);
 		faderObj.setRatio(health/100);	
 		this.sprite.body.velocity.set(0);
 		if (gameObj.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
@@ -56,5 +59,17 @@ function Player(g,w,f)
 	this.getSprite = function()
 	{
 		return (this.sprite);
+	}
+	this.changeHealth = function(amount)
+	{
+		health = Math.min(Math.max(health + amount,0),100);
+	}
+	this.addPoint = function()
+	{
+		this.points = this.points + 1;
+	}
+	this.getHealth = function()
+	{
+		return (health);
 	}
 }

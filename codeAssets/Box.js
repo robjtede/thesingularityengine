@@ -9,6 +9,7 @@ function Box(g) //Parsing the game object
 	var distanceOffset = 0;
 	var stepRate = Math.PI/100;
 	var wobbleDistance = 10;
+	var randoms = [Math.random(), Math.random(), Math.random(), Math.random()];
 	this.init = function()
 	{
 		mainGroup = gameObj.add.group()
@@ -48,7 +49,7 @@ function Box(g) //Parsing the game object
 		stepRate = Math.PI/(ratio * 100);
 		for (var i = 0; i<4; i++)
 		{
-			this.sprites[i].animations.getAnimation("border").speed = baseFps * (1+(1-ratio)*1.5);
+			this.sprites[i].animations.getAnimation("border").speed = baseFps * (1+(1-ratio)*1.5 /*- 0.5 + randoms[i]*/);
 		}
 	}
 	this.update = function()
