@@ -57,7 +57,7 @@ function Box(g) //Parsing the game object
 		var mod = Math.round(Math.sin(distanceOffset) * wobbleDistance);
 		distance = distance + (targetDistance - distance) * 0.1;
 		this.sprites[0].y = distance - mod;
-		this.maskSprites[0].y = distance - mod;
+		this.maskSprites[0].y = distance - mod
 		this.sprites[1].y = -1*distance + mod;
 		this.maskSprites[1].y = -1*distance + mod;
 		this.sprites[2].x = -1*distance + mod;

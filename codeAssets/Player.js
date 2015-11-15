@@ -7,8 +7,7 @@ function Player(g,w,f)
 	var speed = 300;
 	var health = 100;
 	this.init = function()
-	{
-		gameObj.physics.startSystem(Phaser.Physics.ARCADE);
+	{	
 		this.sprite = gameObj.add.sprite(gameObj.world.centerX, gameObj.world.centerY, "man", 0);
 		this.sprite.anchor.setTo(0.5,0.5);
 		this.sprite.animations.add("backwards", [9, 11, 10, 11], 5, true);
@@ -22,8 +21,7 @@ function Player(g,w,f)
 	}
 	this.update = function()
 	{
-		faderObj.setRatio(health/100);
-		gameObj.physics.arcade.collide(this.sprite, worldObj);
+		faderObj.setRatio(health/100);	
 		this.sprite.body.velocity.set(0);
 		if (gameObj.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
 			this.sprite.body.velocity.x = -speed;
