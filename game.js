@@ -67,15 +67,6 @@ function create () {
 		badBubbles[i].init("bad", player);
 	}
 	
-	// player = game.add.sprite(game.world.centerX, game.world.centerY, "man", 0);
-	player.getSprite().animations.add("backwards", [9, 11, 10, 11], 5, true);
-	player.getSprite().animations.add("forwards", [1, 0, 2, 0], 5, true);
-	player.getSprite().animations.add("left", [4, 3, 5, 3], 5, true);
-	player.getSprite().animations.add("right", [6, 8, 7, 8], 5, true);
-	
-	game.physics.enable(player, Phaser.Physics.ARCADE);
-	player.getSprite().body.setSize(50, 80, 0, 0);
-	
 	game.camera.follow(player.getSprite());
 	
 	fader.init();
