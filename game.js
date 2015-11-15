@@ -15,6 +15,7 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "
 var fader = new Box(game);
 var player = new Player(game, world, fader);
 var music = new Music(game);
+var playlist = ["assets/music/high.ogg", "assets/music/mid.ogg", "assets/music/low.ogg"];
 
 function preload () {
 	
@@ -23,7 +24,7 @@ function preload () {
 	
 	game.load.spritesheet("man", "assets/guy.png", 50, 80);
 	game.load.spritesheet("boxFade", "assets/fade.png", 1000, 200, 3);
-	music.init("assets/music/high.ogg");
+	music.init(playlist);
 	
 }
 
@@ -66,7 +67,7 @@ function update () {
 function render () {
 	
 	game.debug.spriteInfo(player.getSprite(), 20, 32);
-	music.render(20, 500);
+	music.debug();
 	
 }// render()
 
