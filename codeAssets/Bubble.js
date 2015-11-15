@@ -62,5 +62,5 @@ function Bubble(g,x,y)
 		this.sprite.x = xPos;
 		this.sprite.y = yPos;
 	}
-
-}	
+	
+}

@@ -8,7 +8,7 @@ function Player(g,w,f,m)
 	var speed = 250;
 	var health = 100;
 	var points = 0;
-	var healthLoss = 0.04;
+	var healthLoss = 0.02;
 	this.init = function()
 	{	
 		this.sprite = gameObj.add.sprite(300,300, "man", 0);
