@@ -24,7 +24,7 @@ function Box(g) //Parsing the game object
 			this.maskSprites[i] = gameObj.add.graphics(0,0);
 			this.maskSprites[i].boundsPadding = 0;
 			this.maskSprites[i].beginFill(0x0000000, 1);
-			this.maskSprites[i].drawRect(-900,198,1800,1400);
+			this.maskSprites[i].drawRect(-1000,198,2000,1800);
 			mainGroup.add(this.maskSprites[i]);
 		}
 		
